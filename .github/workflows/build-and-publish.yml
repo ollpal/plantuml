@@ -1,0 +1,12 @@
+name: build-and-publish
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+        docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password-stdin <<< ${{ secrets.DOCKERHUB_PASSWORD }}
+        ./build-and-publish.sh
