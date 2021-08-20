@@ -2,6 +2,12 @@ name: build-and-publish
 on:
   schedule:
     - cron: "0 0 * * 0"
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
